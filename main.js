@@ -7,7 +7,7 @@ window.boot = function () {
     var settings = window._CCSettings;
     window._CCSettings = undefined;
 
-    if (!settings.debug) {
+    if ( !settings.debug ) {
         var uuids = settings.uuids;
 
         var rawAssets = settings.rawAssets;
@@ -47,7 +47,7 @@ window.boot = function () {
         }
     }
 
-    function setLoadingDisplay() {
+    function setLoadingDisplay () {
         // Loading splash scene
         var splash = document.getElementById('splash');
         var progressBar = splash.querySelector('.progress-bar span');
@@ -68,25 +68,6 @@ window.boot = function () {
     var onStart = function () {
         cc.loader.downloader._subpackages = settings.subpackages;
 
-        cc.ContainerStrategy.prototype._setupContainer = function (view, w, h) {
-            var locCanvas = cc.game.canvas, locContainer = cc.game.container;
-            if (!CC_WECHATGAME && cc.sys.os === cc.sys.OS_ANDROID) {
-                document.body.style.width = (view._isRotated ? h : w) + 'px';
-                document.body.style.height = (view._isRotated ? w : h) + 'px';
-            }
-            // Setup style
-            locContainer.style.width = locCanvas.style.width = w + 'px';
-            locContainer.style.height = locCanvas.style.height = h + 'px';
-            // Setup pixel ratio for retina display
-            var devicePixelRatio = view._devicePixelRatio = 1;
-            if (view.isRetinaEnabled()) {
-                devicePixelRatio = view._devicePixelRatio = window.devicePixelRatio || 1;
-            }
-            // Setup canvas
-            locCanvas.width = w * devicePixelRatio;
-            locCanvas.height = h * devicePixelRatio;
-        };
-
         cc.view.enableRetina(true);
         cc.view.resizeWithBrowserSize(true);
 
@@ -102,13 +83,12 @@ window.boot = function () {
                 else if (settings.orientation === 'portrait') {
                     cc.view.setOrientation(cc.macro.ORIENTATION_PORTRAIT);
                 }
-                //cc.view.enableAutoFullScreen(false);
-                cc.view.enableAutoFullScreen([
-                    cc.sys.BROWSER_TYPE_BAIDU,
-                    cc.sys.BROWSER_TYPE_WECHAT,
-                    cc.sys.BROWSER_TYPE_MOBILE_QQ,
-                    cc.sys.BROWSER_TYPE_MIUI,
-                ].indexOf(cc.sys.browserType) < 0);
+                // cc.view.enableAutoFullScreen([
+                //     cc.sys.BROWSER_TYPE_BAIDU,
+                //     cc.sys.BROWSER_TYPE_WECHAT,
+                //     cc.sys.BROWSER_TYPE_MOBILE_QQ,
+                //     cc.sys.BROWSER_TYPE_MIUI,
+                // ].indexOf(cc.sys.browserType) < 0);
             }
 
             // Limit downloading max concurrent task to 2,
@@ -146,23 +126,6 @@ window.boot = function () {
                 console.log('Success to load scene: ' + launchScene);
             }
         );
-
-        //模糊效果的后面
-        cc.ContainerStrategy.prototype._setupContainer = function (view, w, h) {
-            var locCanvas = cc.game.canvas, locContainer = cc.game.container;
-            if (!CC_WECHATGAME && cc.sys.os === cc.sys.OS_ANDROID) {
-                document.body.style.width = (view._isRotated ? h : w) + 'px';
-                document.body.style.height = (view._isRotated ? w : h) + 'px';
-                // Setup style    
-                locContainer.style.width = locCanvas.style.width = w + 'px'; locContainer.style.height = locCanvas.style.height = h + 'px';
-            }
-            // Setup pixel ratio for retina display    
-            var devicePixelRatio = view._devicePixelRatio = 1;
-
-            if (view.isRetinaEnabled()) { devicePixelRatio = view._devicePixelRatio = window.devicePixelRatio || 1; }    // Setup canvas    
-            locCanvas.width = w * devicePixelRatio; locCanvas.height = h * devicePixelRatio;
-        };
-        cc.view.enableRetina(true);
     };
 
     // jsList
@@ -184,8 +147,8 @@ window.boot = function () {
         }
     }
     
-        var option = {
-            id: 'GameCanvas',
+    var option = {
+        id: 'GameCanvas',
         scenes: settings.scenes,
         debugMode: settings.debug ? cc.debug.DebugMode.INFO : cc.debug.DebugMode.ERROR,
         showFPS: !false && settings.debug,
@@ -200,30 +163,30 @@ window.boot = function () {
 
 // main.js is qqplay and jsb platform entry file, so we must leave platform init code here
 if (false) {
-            BK.Script.loadlib('GameRes://src/settings.js');
-        BK.Script.loadlib();
-        BK.Script.loadlib('GameRes://libs/qqplay-downloader.js');
-    
+    BK.Script.loadlib('GameRes://src/settings.js');
+    BK.Script.loadlib();
+    BK.Script.loadlib('GameRes://libs/qqplay-downloader.js');
+
     var ORIENTATIONS = {
-            'portrait': 1,
+        'portrait': 1,
         'landscape left': 2,
         'landscape right': 3
     };
     BK.Director.screenMode = ORIENTATIONS[window._CCSettings.orientation];
     initAdapter();
     cc.game.once(cc.game.EVENT_ENGINE_INITED, function () {
-            initRendererAdapter();
-        });
+        initRendererAdapter();
+    });
+
+    qqPlayDownloader.REMOTE_SERVER_ROOT = "";
+    var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
+    cc.loader.insertPipeAfter(prevPipe, qqPlayDownloader);
     
-        qqPlayDownloader.REMOTE_SERVER_ROOT = "";
-        var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
-        cc.loader.insertPipeAfter(prevPipe, qqPlayDownloader);
-    
-            window.boot();
-        }
+    window.boot();
+}
 else if (window.jsb) {
-                require('src/settings.js');
-            require('src/cocos2d-jsb.js');
-            require('jsb-adapter/engine/index.js');
-            window.boot();
+    require('src/settings.js');
+    require('src/cocos2d-jsb.js');
+    require('jsb-adapter/engine/index.js');
+    window.boot();
 }

@@ -94,14 +94,14 @@ p.footer {
 .logo {
   position: relative;
   margin: auto;
-  top: 10%;
-  height: 60%;
-  width: 60%;
+  top: 26%;
+  height: 30%;
+  /* width: 50%; */
   /* padding: 5px; */
   background:url(./logo.png) no-repeat center;
-  background-size: 100%;
+  background-size: contain;
 
-  animation: animate-opacity .7s linear infinite;             
+  animation: animate-opacity .8s linear infinite;             
 }
 
 .progress-bar {
@@ -140,5 +140,5 @@ p.footer {
 }
 
 @keyframes animate-opacity {
-  0% {opacity: 1} 80% {opacity: .9} 100% {opacity: 1}
+  0% {opacity: 1} 80% {opacity: .7} 100% {opacity: 1}
 }

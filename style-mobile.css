@@ -87,8 +87,21 @@ p.footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #171717 url(./splash.png) no-repeat center;
-  background-size: 40%;
+  background:url(./splash.png) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.logo {
+  position: relative;
+  margin: auto;
+  top: 10%;
+  height: 60%;
+  width: 60%;
+  /* padding: 5px; */
+  background:url(./logo.png) no-repeat center;
+  background-size: 100%;
+
+  animation: animate-opacity .7s linear infinite;             
 }
 
 .progress-bar {
@@ -124,4 +137,8 @@ p.footer {
 
 @keyframes animate-stripes {
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+
+@keyframes animate-opacity {
+  0% {opacity: 1} 80% {opacity: .9} 100% {opacity: 1}
 }

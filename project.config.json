@@ -1,0 +1,55 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx6ac3f5090a6b99c5",
+	"projectname": "%E8%BF%87%E6%A1%A5%E6%BA%90%E7%A0%81_appid",
+	"isGameTourist": true,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "test123",
+					"query": "cid=test123"
+				},
+				{
+					"id": -1,
+					"name": "ruler_item",
+					"query": "position_id=101&share_id=-1&uuid=B5154F68-58B0-4B02-B77C-1D7F2C8505EE&sid=10D57892-6B70-46F5-8288-1DA4567143FF&t=1539804447831"
+				},
+				{
+					"id": 2,
+					"name": "revive_item",
+					"query": "position_id=99&share_id=-1&uuid=B5154F68-58B0-4B02-B77C-1D7F2C8505EE&sid=10D57892&t=1538806820815"
+				}
+			]
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
+}

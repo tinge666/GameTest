@@ -1,0 +1,18 @@
+{
+    "deviceOrientation": "portrait",
+    "subContext": "sub",
+    "networkTimeout": {
+        "request": 30000,
+        "connectSocket": 30000,
+        "uploadFile": 30000,
+        "downloadFile": 30000
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx84fca242633cbd70",
+        "wx2570b0c6b7e68c7d",
+        "wx00d984443ee4a472",
+        "wx995d80da70a9f651",
+        "wxffc2e9f47da8a17c",
+        "wx6569390af7e6aa9c"
+    ]
+}
